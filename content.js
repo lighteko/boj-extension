@@ -1,4 +1,5 @@
 window.onload = async () => {
+  console.log("BOJ-EXTENSION CALLED");
   const table = document.querySelector(".table").childNodes;
   const header = table[0].childNodes[0];
   header.childNodes[0].style = "width: 6%";
