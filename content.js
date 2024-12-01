@@ -3,8 +3,8 @@ window.onload = async () => {
   const table = document.querySelector(".table").childNodes;
   const header = table[0].childNodes[0];
   header.childNodes[0].style = "width: 6%";
-  header.childNodes[2].style = "width: 45%";
-  header.childNodes[4].style = "width: 11%";
+  header.childNodes[1].style = "width: 49%";
+  header.childNodes[3].style = "width: 7%";
   const body = table[1].childNodes;
   const problems = [];
 
@@ -12,18 +12,16 @@ window.onload = async () => {
     const pID = tr.querySelector(".list_problem_id").innerText;
     problems.push(pID);
   }
-  
-  const res = await fetch(
-    `https://k6loix5qrsfdjr7lo3jmq6v5vm0ralrw.lambda-url.us-east-2.on.aws/?problems=${problems.toString()}`
-  );
+
+  const res = await fetch(chrome.runtime.getURL("problems.json"));
   const tier = document.createElement("th");
   tier.innerText = "티어";
   tier.style = "width: 5%";
   header.insertBefore(tier, header.childNodes[0]);
   const levels = await res.json();
-  for (let i = 0; i < levels.length; i++) {
+  for (let i = 0; i < problems.length; i++) {
     const tr = body[i];
-    const level = levels[i];
+    const level = levels[problems[i]];
     const tierBody = document.createElement("td");
     tierBody.innerHTML = `<img src="https://static.solved.ac/tier_small/${level}.svg" alt="${level}-level" />`;
     tr.insertBefore(tierBody, tr.childNodes[0]);

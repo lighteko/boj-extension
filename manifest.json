@@ -1,12 +1,18 @@
 {
-  "name":"백준 티어 프리뷰",
-  "description":"백준 문제의 티어를 표시해주는 확장 프로그램",
-  "version":"1.0",
-  "manifest_version":3,
-  "content_scripts":[
-     {
-       "matches":["https://www.acmicpc.net/*"],
+  "name": "백준 티어 프리뷰",
+  "description": "백준 문제의 티어를 표시해주는 확장 프로그램",
+  "version": "1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://www.acmicpc.net/*"],
       "js": ["content.js"]
-     }
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["problems.json"],
+      "matches": ["https://www.acmicpc.net/*"]
+    }
   ]
 }
